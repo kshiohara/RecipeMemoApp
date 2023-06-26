@@ -19,31 +19,56 @@
 
               <!-- Page Heading -->
 
-              <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                  <div><a href="/">Recipe Memo</a></div>
+              <header class="bg-white shadow py-2">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 container">
+                  <div class="row">
+                    <div class="col-3"><a href="/" class="text-black text-decoration-none fs-2">Recipe Memo</a></div>
                     {{-- ユーザーがログインしている場合 --}}
                     @auth
-                    <ul>
-                      <li><a href='#'>マイページ</a></li>
-                      <li>
-                        <a href={{ route('logout') }} onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
-                        <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;"></li>
-                        @csrf
-                        {{-- <a href='{{ route('logout')}}'>ログアウト</a></li> --}}
-                    </ul>
+                    {{-- レシピ検索機能 --}}
+                    <div class="col-4 mt-1">
+                      <form method="GET" action="#">
+                        <input type="search" class="form-control" placeholder="材料を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+                      </form>
+                    </div>
+                    {{-- レシピ登録機能 --}}
+                    <div class="col-2 mt-1">
+                      <button type="button" class="btn btn-primary" onclick="loction.href='/'">レシピ登録</button>
+                    </div>
+
+                    <div class="col-3 mt-1">
+                      <ul class="list-unstyled list-group list-group-horizontal my-2">
+                        <li class="list-unstyled mx-4"><a href='#' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
+                        <li class="list-unstyled">
+                          <a href={{ route('logout') }} class="text-black text-decoration-none" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+                          <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;"></li>
+                          @csrf
+                      </ul>
+                    </div>
                     {{-- ユーザーがログインしていない場合 --}}
                     @else
-                    <ul>
-                      <li><a href='{{ route('register')}}'>新規登録</a></li>
-                      <li><a href='{{ route('login')}}'>ログイン</a></li>
-                    </ul>
+                    {{-- 検索機能 --}}
+                    <div class="col-6 mt-1">
+                      <form method="GET" action="#">
+                        <input type="search" class="form-control" placeholder="材料を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+                      </form>
+                    </div>
+                    <div class="col-3 mt-1">
+                      <ul class="list-unstyled list-group list-group-horizontal my-2">
+                        <li class="list-unstyled mx-4"><a href='{{ route('register')}}' class="text-black text-decoration-none fs-6">新規登録</a></li>
+                        <li class="list-unstyled"><a href='{{ route('login')}}' class="text-black text-decoration-none fs-6">ログイン</a></li>
+                      </ul>
+                    </div>
                     @endauth
+
                   </div>
+                </div>
               </header>
 
               <!-- Page Content -->
               <main>
+
+
               </main>
           </div>
       </body>
