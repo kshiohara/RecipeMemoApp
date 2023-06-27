@@ -28,12 +28,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // $request に含まれるログイン情報を使用してユーザーの認証を実施。
+        // authenticateメソッド:ユーザーを認証し、認証が成功した場合はセッションを作成
         $request->authenticate();
 
+        // セッション再生成の目的は、セキュリティ上の理由から、ログイン後にセッションIDを変更すること。
+        // これにより、セッションハイジャック攻撃を防ぐことができる。
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
-        // return redirect('recipe/index');
     }
 
     /**
