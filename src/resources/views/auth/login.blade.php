@@ -23,7 +23,7 @@
             <!-- メールアドレス入力 -->
             <div class="mt-5 mb-4">
                 <label for="email" class="form-label">メールアドレス</label>
-                <input id="email" class="block mt-1 form-control" type="email" name="email" value="{{ old('メールアドレス') }}" required autofocus/>
+                <input id="email" class="block mt-1 form-control" type="email" name="email" value="{{ old('email') }}" required autofocus/>
             </div>
 
             <!-- パスワード入力 -->

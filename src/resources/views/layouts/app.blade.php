@@ -33,12 +33,12 @@
                     </div>
                     {{-- レシピ登録機能 --}}
                     <div class="col-2 mt-1">
-                      <button type="button" class="btn btn-primary" onclick="loction.href='/'">レシピ登録</button>
+                      <button type="button" class="btn btn-primary" onclick="location.href='{{ route('recipe.create') }}'">レシピ登録</button>
                     </div>
 
                     <div class="col-3 mt-1">
                       <ul class="list-unstyled list-group list-group-horizontal my-2">
-                        <li class="list-unstyled mx-4"><a href='#' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
+                        <li class="list-unstyled mx-4"><a href='{{ route('user.index') }}' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
                         <li class="list-unstyled">
                           <a href={{ route('logout') }} class="text-black text-decoration-none" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                           <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;"></li>

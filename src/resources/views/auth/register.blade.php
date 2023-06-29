@@ -23,19 +23,19 @@
             <!-- 氏名入力 -->
             <div class="mt-5">
                 <label for="name" class="form-label">氏名</label>
-                <input id="name" class="block mt-1 form-control" type="text" name="name" value="{{ old('氏名') }}" required autofocus/>
+                <input id="name" class="block mt-1 form-control" type="text" name="name" value="{{ old('name') }}" required autofocus/>
             </div>
 
             <!-- フリガナ入力 -->
             <div class="mt-3">
                 <label for="kana" class="form-label">フリガナ</label>
-                <input id="kana" class="block mt-1 form-control" type="text" name="kana" value="{{ old('フリガナ') }}" required autofocus/>
+                <input id="kana" class="block mt-1 form-control" type="text" name="kana" value="{{ old('kana') }}" required autofocus/>
             </div>
 
             <!-- メールアドレス入力 -->
             <div class="mt-3">
                 <label for="email" class="form-label">メールアドレス</label>
-                <input id="email" class="block mt-1 form-control" type="email" name="email" value="{{ old('メールアドレス') }}" required autofocus/>
+                <input id="email" class="block mt-1 form-control" type="email" name="email" value="{{ old('email') }}" required autofocus/>
             </div>
 
             <!-- パスワード入力 -->
