@@ -18,7 +18,6 @@
           <div class="min-h-screen bg-gray-100">
 
               <!-- Page Heading -->
-
               <header class="bg-white shadow py-2">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 container">
                   <div class="row">
@@ -41,8 +40,8 @@
                         <li class="list-unstyled mx-4"><a href='{{ route('user.index') }}' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
                         <li class="list-unstyled">
                           <a href={{ route('logout') }} class="text-black text-decoration-none" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
-                          <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;"></li>
-                          @csrf
+                          <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">@csrf</form>
+                        </li>
                       </ul>
                     </div>
                     {{-- ユーザーがログインしていない場合 --}}

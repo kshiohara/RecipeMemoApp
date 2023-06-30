@@ -12,7 +12,7 @@
           <!-- レシピ名入力 -->
           <div class="mt-5">
               <label for="name" class="form-label">レシピ名</label>
-              <input id="name" class="block mt-1 form-control" type="text" name="name" value="{{ old('name') }}" required />
+              <input id="name" class="block mt-1 form-control" type="text" name="name" required />
           </div>
 
           <!-- レシピURL入力 -->
@@ -27,15 +27,15 @@
               {{-- スターで表現する --}}
               {{-- <input id="rating" class="block mt-1 w-full form-control" type="text" name="rating" /> --}}
               <div class="rate-form">
-                <input id="star5" type="radio" name="rate" value="5">
+                <input id="star5" type="radio" name="rating" value="5">
                 <label for="star5">★</label>
-                <input id="star4" type="radio" name="rate" value="4">
+                <input id="star4" type="radio" name="rating" value="4">
                 <label for="star4">★</label>
-                <input id="star3" type="radio" name="rate" value="3">
+                <input id="star3" type="radio" name="rating" value="3">
                 <label for="star3">★</label>
-                <input id="star2" type="radio" name="rate" value="2">
+                <input id="star2" type="radio" name="rating" value="2">
                 <label for="star2">★</label>
-                <input id="star1" type="radio" name="rate" value="1">
+                <input id="star1" type="radio" name="rating" value="1">
                 <label for="star1">★</label>
               </div>
           </div>
@@ -62,8 +62,8 @@
           <!-- 材料入力(ingredientsテーブル) -->
           <div class="mt-3">
               <label for="name" class="form-label">材料</label>
-              {{-- プルダウンで選択制（1.作成済み、2.未作成） --}}
-              <input id="name" class="block mt-1 w-full form-control" type="text" name="name" required />
+              {{-- 複数の材料を登録できるようにする --}}
+              <input id="name" class="block mt-1 w-full form-control" type="text" name="ingredients[]" required />
           </div>
 
           <div class="mt-5 text-center">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +26,6 @@ Route::get('/dashboard', function () {
 
 
 // userルーティング
-// Route::resource('user', UserController::class);
-
 Route::get('user/index', [UserController::class, 'index'])
             ->name('user.index');
 
@@ -36,12 +35,8 @@ Route::get('user/edit/{user}', [UserController::class, 'edit'])
 Route::patch('user/{user}', [UserController::class, 'update'])
             ->name('user.update');
 
-// Route::post('user/{user}', [UserController::class, 'update'])
-//             ->name('user.update');
-
 Route::delete('user/{user}', [UserController::class, 'destroy'])
             ->name('user.destroy');
-
 
 // recipeルーティング
 Route::get('recipe/index', [RecipeController::class, 'index'])
@@ -50,7 +45,7 @@ Route::get('recipe/index', [RecipeController::class, 'index'])
 Route::get('recipe/create', [RecipeController::class, 'create'])
             ->name('recipe.create');
 
-Route::get('recipe/store', [RecipeController::class, 'store'])
+Route::post('recipe/store', [RecipeController::class, 'store'])
             ->name('recipe.store');
 
 

@@ -3,17 +3,19 @@
 
 @section('content')
 
+@error('email')
+<p>{{$message}}</p>
+@enderror
+
 <main>
   <div class="container my-5 py-5" style="width: 50%">
       <div class="h3">マイページ編集画面</div>
 
       {{-- 第一引数：user.updateへのルーティング、第二引数：ルートに渡すパラメーター --}}
       <form method="post" action="{{ route('user.update', $user) }}">
-      {{-- <form method="patch" action="{{ route('user.update', $user) }}"> --}}
-      {{-- <form method="patch" action="user/update" > --}}
-        @csrf
         {{-- @methodで送信形式をpatchに指定 --}}
         @method('patch')
+        @csrf
 
         <!-- 氏名入力 -->
         <div class="mt-5">

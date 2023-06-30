@@ -55,7 +55,7 @@
                 <input id="payment-1" type="radio" name="payment" value="1" />
                 <label for="payment-1" class="form-label">有料会員</label>
                 <input id="payment-2" type="radio" name="payment" value="2" />
-                <label for="payment-2" class="form-label">有料会員</label>
+                <label for="payment-2" class="form-label">無料会員</label>
             </div>
             <div class="block mt-4 d-flex align-items-center">
                 <div>

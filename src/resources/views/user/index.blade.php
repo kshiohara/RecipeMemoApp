@@ -4,8 +4,8 @@
 
 <main>
   <div class="container my-5 py-5" style="width: 50%">
-      <div class="h3">マイページ詳細</div>
 
+      <div class="h3">マイページ詳細</div>
       <!-- 氏名詳細 -->
       <div class="mt-5 mb-4">
         <p class="">氏名</p>
@@ -35,13 +35,15 @@
       </div>
 
       <!-- 編集、削除ボタン -->
-      <div class="text-center">
-        <button type="button" class="btn btn-primary" onclick="location.href='{{ route('user.edit', $user) }}'">編集</button>
-        <form method="post" action="{{ route('user.destroy', $user) }}">
-          @method('delete')
-          @csrf
-          <button type="submit" class="btn btn-secondary">削除</button>
-        </form>
+      <div class="mt-5 text-center">
+        <div class="d-inline-block">
+          <button type="button" class="btn btn-primary mx-3" onclick="location.href='{{ route('user.edit', $user) }}'">編集</button>
+          <form method="post" action="{{ route('user.destroy', $user) }}" class="d-inline-block">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-secondary" onclick="return confirm('本当に削除しますか?')">削除</button>
+          </form>
+        </div>
       </div>
 
   </div>

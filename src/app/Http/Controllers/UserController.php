@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -25,25 +26,19 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'kana' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'payment' => ['required', 'integer', 'between:1,2'],
         ]);
 
-        Log::debug($request);
-        Log::debug($user);
-
-        // dd($request->method());
-        // dd('hello world');
-
-        // $user->update($validated);
-        // $user->save($validated);
-
+        $user->update($validated);
         return view('user.index', compact('user'));
     }
 
     public function destroy(Request $request, User $user)
     {
         $user->delete();
-        return redirect()->route('/');
+        $request->session()->flash('message', '削除しました');
+        return redirect()->route('home');
     }
 
 }

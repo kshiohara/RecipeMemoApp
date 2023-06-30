@@ -17,7 +17,7 @@
 
     <div class="container my-5 py-5" style="width: 50%">
         <div class="h3">ログイン画面</div>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="post" action="{{ route('login') }}">
             @csrf
 
             <!-- メールアドレス入力 -->
