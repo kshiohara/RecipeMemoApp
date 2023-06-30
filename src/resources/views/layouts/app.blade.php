@@ -9,9 +9,11 @@
 
           <!-- Fonts -->
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+          <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
           <!-- Scripts -->
           <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+          <script src="{{ mix('js/recipe.js') }}" defer></script>
           {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
       </head>
       <body class="font-sans antialiased">

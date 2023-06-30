@@ -26,6 +26,8 @@ class RecipeController extends Controller
     // (Request $request) : formで送信されたデータを受け取ることを意味する
     public function store(Request $request)
     {
+        // validation必要
+
         // レシピデータの保存
         $recipe = new Recipe();
         $recipe->name = $request->name;
@@ -37,14 +39,17 @@ class RecipeController extends Controller
         $recipe->save();
 
         // 材料データの保存
-        $ingredients = $request->input('ingredients');
+        $ingredients = $request->ingredients;
 
         foreach($ingredients as $ingredientData) {
             $ingredient = new Ingredient();
-            $ingredient->name = $ingredientData['name'];
-            $ingredient->recipe_id = $recipe->id;
+            $ingredient->name = $ingredientData;
             $ingredient->save();
+
+            //
+            $recipe->ingredients()->attach($ingredient->id);
         }
+
 
         // $validated = $request->validate([
         //     'name' => ['required', 'string', 'max:100'],

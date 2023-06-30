@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// BelongsToManyのリレーションを使用する為に必要
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 class Recipe extends Model
 {
     use HasFactory;
@@ -27,10 +30,8 @@ class Recipe extends Model
     }
 
     // Ingredientモデルとのリレーション
-    public function ingredients(): belongsToMany
+    public function ingredients(): BelongsToMany
     {
-        // laravelの中間テーブル名は複数形にしないルールが有る
-        // 今回は複数形のテーブルを作成済みの為、belongsToManyの第二引数にテーブル名を指定
-        return $this->belongsToMany(Ingredient::class, 'ingredients_recipes');
+        return $this->belongsToMany(Ingredient::class, 'ingredients_recipes', 'recipe_id', 'ingredient_id');
     }
 }
