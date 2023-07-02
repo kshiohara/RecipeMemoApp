@@ -27,7 +27,6 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         // validation必要
-
         // レシピデータの保存
         $recipe = new Recipe();
         $recipe->name = $request->name;
@@ -42,12 +41,24 @@ class RecipeController extends Controller
         $ingredients = $request->ingredients;
 
         foreach($ingredients as $ingredientData) {
-            $ingredient = new Ingredient();
-            $ingredient->name = $ingredientData;
-            $ingredient->save();
+            // 材料が空ではない場合のみ処理
+            if (!empty($ingredientData)) {
+                // ingredientsテーブルのnameカラムの値が送信された材料名と一致するデータを取得
+                $existingIngredient = Ingredient::where('name', $ingredientData)->first();
 
-            //
-            $recipe->ingredients()->attach($ingredient->id);
+                // 材料がDBに存在する場合
+                if ($existingIngredient) {
+                    // $existingIngredientを新しいレシピと関連付ける
+                    $recipe->ingredients()->attach($existingIngredient->id);
+                } else {
+                    // 材料を新規登録する場合
+                    $ingredient = new Ingredient();
+                    $ingredient->name = $ingredientData;
+                    $ingredient->save();
+
+                    $recipe->ingredients()->attach($ingredient->id);
+                }
+            }
         }
 
 
