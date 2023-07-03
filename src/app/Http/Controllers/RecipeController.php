@@ -12,10 +12,25 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $recipe_data = Recipe::orderBy('created_at', 'desc')->get();
+
+        // 検索フォームに入力された値を取得
+        $search = $request->input('search');
+        // レシピテーブルから全ての情報を取得
+        $recipe_query = Recipe::query();
+
+        // 検索フォームが空でない場合、レシピ名/材料名と一致するデータを取得
+        if (!empty($search)) {
+            $recipe_query->where('name', 'LIKE', "%{$search}%")
+            ->orwhereHas('ingredients', function ($ingredient_query) use ($search) {
+                $ingredient_query->where('name', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // 検索キーワードと一致した情報を新しい順で取得
+        $recipe_data = $recipe_query->orderBy('created_at', 'desc')->get();
         $recipes = [];
 
         foreach($recipe_data as $recipe){
@@ -32,6 +47,7 @@ class RecipeController extends Controller
                 'ingredients' => $ingredients,
             ];
         };
+
         return view('recipe/index', compact('user', 'recipes'));
     }
 
@@ -57,11 +73,11 @@ class RecipeController extends Controller
         // 材料データの保存
         $ingredients = $request->ingredients;
 
-        foreach($ingredients as $ingredient) {
+        foreach($ingredients as $ingredientData) {
             // 材料が空ではない場合のみ処理
             if (!empty($ingredient)) {
                 // ingredientsテーブルのnameカラムの値が送信された材料名と一致するデータを取得
-                $existingIngredient = Ingredient::where('name', $ingredient)->first();
+                $existingIngredient = Ingredient::where('name', $ingredientData)->first();
 
                 // 材料がDBに存在する場合
                 if ($existingIngredient) {
@@ -70,7 +86,7 @@ class RecipeController extends Controller
                 } else {
                     // 材料を新規登録する場合
                     $ingredient = new Ingredient();
-                    $ingredient->name = $ingredient;
+                    $ingredient->name = $ingredientData;
                     $ingredient->save();
 
                     $recipe->ingredients()->attach($ingredient->id);
