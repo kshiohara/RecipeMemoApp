@@ -16,9 +16,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('recipe.index');
-});
+// Route::get('/', function () {
+//     return view('recipe.index');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,6 +39,9 @@ Route::delete('user/{user}', [UserController::class, 'destroy'])
             ->name('user.destroy');
 
 // recipeルーティング
+Route::get('/', [RecipeController::class, 'index'])
+            ->name('recipe.index');
+
 Route::get('recipe/index', [RecipeController::class, 'index'])
             ->name('recipe.index');
 
@@ -47,6 +50,15 @@ Route::get('recipe/create', [RecipeController::class, 'create'])
 
 Route::post('recipe/store', [RecipeController::class, 'store'])
             ->name('recipe.store');
+
+Route::get('recipe/edit/{recipe}', [RecipeController::class, 'edit'])
+            ->name('recipe.edit');
+
+Route::patch('recipe/{recipe}', [RecipeController::class, 'update'])
+            ->name('recipe.update');
+
+Route::delete('recipe/{recipe}', [RecipeController::class, 'destroy'])
+            ->name('recipe.destroy');
 
 
 

@@ -29,7 +29,7 @@
                     {{-- レシピ検索機能 --}}
                     <div class="col-4 mt-1">
                       <form method="GET" action="#">
-                        <input type="search" class="form-control" placeholder="材料を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+                        <input type="search" class="form-control" placeholder="レシピを検索（レシピ、材料を入力）" name="search" value="@if (isset($search)) {{ $search }} @endif">
                       </form>
                     </div>
                     {{-- レシピ登録機能 --}}

@@ -25,7 +25,6 @@
           <div class="mt-3">
               <label for="rating" class="form-label">評価</label>
               {{-- スターで表現する --}}
-              {{-- <input id="rating" class="block mt-1 w-full form-control" type="text" name="rating" /> --}}
               <div class="rate-form">
                 <input id="star5" type="radio" name="rating" value="5">
                 <label for="star5">★</label>
@@ -101,7 +100,7 @@
       // クラスを指定
       liElement.setAttribute("class", "ingredient_container");
       liElement.setAttribute("style", "display:inline; border: 1px solid #b2cdde; border-radius: 3px; background-image: linear-gradient(180deg, #cae2f0 0, #c3d9e7); color: #545b67; padding: 2px 8px 0px; margin: 0 5px; list-style: none;");
-      spanElement.setAttribute("class", "ingredient_tag");
+      // spanElement.setAttribute("class", "ingredient_tag");
       iElement.setAttribute("class", "far fa-times-circle");
       iElement.setAttribute("style", "margin-left: 4px");
 
