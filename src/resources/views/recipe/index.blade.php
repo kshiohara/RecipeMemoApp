@@ -16,26 +16,21 @@
             <p class="card-text">レシピ名：{{ $recipe['name'] }}</p>
 
             <!-- リンク詳細 -->
-            {{-- <p class="card-text">URL：<a href="{{ $recipe['link'] }}">{{ $recipe['link'] }}</a></p> --}}
-            <!-- リンク詳細 -->
             <p class="card-text d-flex align-items-center">URL：<a href="{{ $recipe['link'] }}" class="text-truncate d-inline-block" style="max-width: 100%" target="_blank">{{ $recipe['link'] }}</a></p>
 
-
             <!-- 評価詳細 -->
-            @if ($recipe['rating'] == 1)
-              <p class="card-text">評価：<span style="color: rgb(255, 131, 0)">★</span><span style="color: #c0c0c0">★★★★</span></p>
-            @elseif ($recipe['rating'] == 2)
-              <p class="card-text">評価：<span style="color: rgb(255, 131, 0)">★★</span><span style="color: #c0c0c0">★★★</span></p>
-            @elseif ($recipe['rating'] == 3)
-              <p class="card-text">評価：<span style="color: rgb(255, 131, 0)">★★★</span><span style="color: #c0c0c0">★★</span></p>
-            @elseif ($recipe['rating'] == 4)
-              <p class="card-text">評価：<span style="color: rgb(255, 131, 0)">★★★★</span><span style="color: #c0c0c0">★</span></p>
-            @elseif ($recipe['rating'] == 5)
-              <p class="card-text">評価：<span style="color: rgb(255, 131, 0)">★★★★★</span></p>
+            
+            @if (!empty($recipe['rating']))
+            <div class="card-text mb-3">
+              <p class="d-inline">評価：</p>
+              {{-- @forを使用して★5個分のループを作成 --}}
+              @for ($i = 1; $i <= 5; $i++)
+                <span class="fs-5" style="color: {{ $i <= $recipe['rating'] ? 'rgb(255, 131, 0)' : '#c0c0c0' }};">★</span>
+              @endfor
+            </div>
             @else
-              <p class="card-text">評価：　未評価</p>
+              <p class="card-text">評価：<span class="fs-5" style="color:#c0c0c0"></span></p>
             @endif
-
 
             <!-- 作成状況詳細 -->
             <p class="card-text">作成状況：

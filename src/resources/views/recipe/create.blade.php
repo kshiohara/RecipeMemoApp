@@ -22,21 +22,17 @@
           </div>
 
           <!-- 評価入力 -->
-          <div class="mt-3">
-              <label for="rating" class="form-label">評価</label>
-              <div class="rate-form">
-                <label for="star1" class="fs-5" style="color:#c0c0c0;" onclick="setRating(1)">★</label>
-                <input id="star1" type="radio" name="rating" value="1" class="d-none" >
-                <label for="star2" class="fs-5" style="color:#c0c0c0;" onclick="setRating(2)">★</label>
-                <input id="star2" type="radio" name="rating" value="2" class="d-none" >
-                <label for="star3" class="fs-5" style="color:#c0c0c0;" onclick="setRating(3)">★</label>
-                <input id="star3" type="radio" name="rating" value="3" class="d-none" >
-                <label for="star4" class="fs-5" style="color:#c0c0c0;" onclick="setRating(4)">★</label>
-                <input id="star4" type="radio" name="rating" value="4" class="d-none" >
-                <label for="star5" class="fs-5" style="color:#c0c0c0;" onclick="setRating(5)">★</label>
-                <input id="star5" type="radio" name="rating" value="5" class="d-none">
-              </div>
+         <!-- 評価 -->
+        <div class="mt-3">
+          <label for="rating" class="form-label">評価</label>
+          <div class="rate-form">
+          {{-- @forを使用して★5個分のループを作成 --}}
+            @for ($i = 1; $i <= 5; $i++)
+              <label for="star{{ $i }}" class="fs-5" style="color: #c0c0c0;" onclick="setRating({{ $i }})">★</label>
+              <input id="star{{ $i }}" type="radio" name="rating" value="{{ $i }}" class="d-none">
+            @endfor
           </div>
+        </div>
 
           <!-- 作成状況入力 -->
           <div class="mt-3">
@@ -130,7 +126,7 @@
   });
 
 
-  // スター評価用
+  // スターレーティング用
   function setRating(rating) {
     let selectedStar = document.getElementById(`star${rating}`);
     let prevStars = selectedStar.previousElementSibling;

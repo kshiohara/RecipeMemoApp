@@ -26,18 +26,12 @@
          <!-- 評価 -->
         <div class="mt-3">
           <label for="rating" class="form-label">評価</label>
-          {{-- スターで表現する --}}
           <div class="rate-form">
-            <input id="star5" type="radio" name="rating" value="5">
-            <label for="star5">★</label>
-            <input id="star4" type="radio" name="rating" value="4">
-            <label for="star4">★</label>
-            <input id="star3" type="radio" name="rating" value="3">
-            <label for="star3">★</label>
-            <input id="star2" type="radio" name="rating" value="2">
-            <label for="star2">★</label>
-            <input id="star1" type="radio" name="rating" value="1">
-            <label for="star1">★</label>
+          {{-- @forを使用して★5個分のループを作成 --}}
+            @for ($i = 1; $i <= 5; $i++)
+              <label for="star{{ $i }}" class="fs-5" style="color: {{ $i <= $recipe->rating ? 'rgb(255, 131, 0)' : '#c0c0c0' }};" onclick="setRating({{ $i }})">★</label>
+              <input id="star{{ $i }}" type="radio" name="rating" value="{{ $i }}" class="d-none" {{ $i == $recipe->rating ? 'checked' : '' }}>
+            @endfor
           </div>
         </div>
 
@@ -62,7 +56,7 @@
         <!-- 感想 -->
         <div class="mt-3">
           <label for="comment" class="form-label">感想</label>
-          <input id="comment" class="block mt-1 form-control" type="text" name="comment" value="{{ old('comment', $recipe->comment) }}" required autofocus/>
+          <textarea id="comment" class="block mt-1 form-control" type="text" name="comment" required autofocus >{{ old('comment', $recipe->comment) }}</textarea>
         </div>
 
         <!-- 材料 -->
@@ -151,6 +145,29 @@
       parentElement.remove();
     })
   });
+
+
+  // スターレーティング用
+  function setRating(rating) {
+    let selectedStar = document.getElementById(`star${rating}`);
+    let prevStars = selectedStar.previousElementSibling;
+    let nextStars = selectedStar.nextElementSibling;
+    selectedStar.checked = true;
+
+    if (selectedStar.style.color == 'rgb(255, 131, 0)') {
+      selectedStar.style.color = '#c0c0c0';
+      while (nextStars) {
+        nextStars.style.color = '#c0c0c0';
+        nextStars = nextStars.nextElementSibling;
+      };
+    } else {
+      selectedStar.style.color = '#FF8300';
+      while (prevStars) {
+        prevStars.style.color = '#FF8300';
+        prevStars = prevStars.previousElementSibling;
+      };
+    };
+  };
 
 </script>
 @endsection
