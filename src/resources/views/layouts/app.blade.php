@@ -43,16 +43,19 @@
                         <li class="list-unstyled mx-4"><a href='{{ route('user.index') }}' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
                         <li class="list-unstyled">
                           <a href={{ route('logout') }} class="text-black text-decoration-none" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
-                          <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">@csrf</form>
+                          <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
+                          @csrf
+                          </form>
                         </li>
                       </ul>
                     </div>
                     {{-- ユーザーがログインしていない場合 --}}
                     @else
-                    {{-- 検索機能 --}}
+                    {{-- レシピ検索機能 --}}
                     <div class="col-6 mt-1">
-                      <form method="GET" action="#">
-                        <input type="search" class="form-control" placeholder="材料を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+                      <form method="GET" action="{{ route('recipe.index') }}">
+                        @csrf
+                        <input type="search" class="form-control" placeholder="レシピを検索（レシピ、材料を入力）" name="search" value="@if (isset($search)) {{ $search }} @endif">
                       </form>
                     </div>
                     <div class="col-3 mt-1">

@@ -5,7 +5,7 @@
 <main>
 
   <div class="container my-5 py-5" style="width: 50%">
-      <div class="h3">レシピ登録画面</div>
+      <h5>レシピ登録画面</h5>
       <form id="recipe_form" method="post" action="{{ route('recipe.store') }}">
           @csrf
 
@@ -24,18 +24,17 @@
           <!-- 評価入力 -->
           <div class="mt-3">
               <label for="rating" class="form-label">評価</label>
-              {{-- スターで表現する --}}
               <div class="rate-form">
-                <input id="star5" type="radio" name="rating" value="5">
-                <label for="star5">★</label>
-                <input id="star4" type="radio" name="rating" value="4">
-                <label for="star4">★</label>
-                <input id="star3" type="radio" name="rating" value="3">
-                <label for="star3">★</label>
-                <input id="star2" type="radio" name="rating" value="2">
-                <label for="star2">★</label>
-                <input id="star1" type="radio" name="rating" value="1">
-                <label for="star1">★</label>
+                <label for="star1" class="fs-5" style="color:#c0c0c0;" onclick="setRating(1)">★</label>
+                <input id="star1" type="radio" name="rating" value="1" class="d-none" >
+                <label for="star2" class="fs-5" style="color:#c0c0c0;" onclick="setRating(2)">★</label>
+                <input id="star2" type="radio" name="rating" value="2" class="d-none" >
+                <label for="star3" class="fs-5" style="color:#c0c0c0;" onclick="setRating(3)">★</label>
+                <input id="star3" type="radio" name="rating" value="3" class="d-none" >
+                <label for="star4" class="fs-5" style="color:#c0c0c0;" onclick="setRating(4)">★</label>
+                <input id="star4" type="radio" name="rating" value="4" class="d-none" >
+                <label for="star5" class="fs-5" style="color:#c0c0c0;" onclick="setRating(5)">★</label>
+                <input id="star5" type="radio" name="rating" value="5" class="d-none">
               </div>
           </div>
 
@@ -129,6 +128,30 @@
       ingredientNameInput.value = '';
       }
   });
+
+
+  // スター評価用
+  function setRating(rating) {
+    let selectedStar = document.getElementById(`star${rating}`);
+    let prevStars = selectedStar.previousElementSibling;
+    let nextStars = selectedStar.nextElementSibling;
+    selectedStar.checked = true;
+
+    if (selectedStar.style.color == 'rgb(255, 131, 0)') {
+      selectedStar.style.color = '#c0c0c0';
+      while (nextStars) {
+        nextStars.style.color = '#c0c0c0';
+        nextStars = nextStars.nextElementSibling;
+      };
+    } else {
+      selectedStar.style.color = '#FF8300';
+      while (prevStars) {
+        prevStars.style.color = '#FF8300';
+        prevStars = prevStars.previousElementSibling;
+      };
+    };
+  };
+
 
 </script>
 

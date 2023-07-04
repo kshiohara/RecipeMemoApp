@@ -9,7 +9,7 @@
 
 <main>
   <div class="container my-5 py-5" style="width: 50%">
-      <div class="h3">マイページ編集画面</div>
+      <h5>マイページ編集画面</h5>
 
       {{-- 第一引数：user.updateへのルーティング、第二引数：ルートに渡すパラメーター --}}
       <form method="post" action="{{ route('user.update', $user) }}">

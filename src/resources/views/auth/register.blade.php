@@ -16,7 +16,7 @@
     @endif
 
     <div class="container my-5 py-5" style="width: 50%">
-        <div class="h3">新規登録画面</div>
+        <h5>新規登録画面</h5>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 

@@ -5,7 +5,7 @@
 <main>
   <div class="container my-5 py-5" style="width: 50%">
 
-      <div class="h3">マイページ詳細</div>
+      <h5>マイページ詳細</h5>
       <!-- 氏名詳細 -->
       <div class="mt-5 mb-4">
         <p class="">氏名</p>

@@ -45,6 +45,7 @@ class RecipeController extends Controller
                 'status' => $recipe->status,
                 'comment' => $recipe->comment,
                 'ingredients' => $ingredients,
+                'user_id' => $recipe->user_id,
             ];
         };
 
