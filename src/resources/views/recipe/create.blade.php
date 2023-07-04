@@ -65,7 +65,7 @@
                 <input id="ingredient_name" class="block mt-1 form-control" type="text" name="ingredients[]" placeholder=材料名を入力してください（複数可） />
                 <button type="button" id="add-btn" class="btn btn-warning btn-sm mx-2">＋</button>
               </div>
-              <ul id="ingredient-list" class="mt-3 ps-0"></ul>
+              <ul id="ingredient-list" class="mt-3 ps-0 d-flex flex-wrap"></ul>
           </div>
 
           <div class="mt-5 text-center">
@@ -98,7 +98,7 @@
       const iElement = document.createElement("i");
 
       // クラスを指定
-      liElement.setAttribute("class", "ingredient_container");
+      liElement.setAttribute("class", "ingredient_container mb-2");
       liElement.setAttribute("style", "display:inline; border: 1px solid #b2cdde; border-radius: 3px; background-image: linear-gradient(180deg, #cae2f0 0, #c3d9e7); color: #545b67; padding: 2px 8px 0px; margin: 0 5px; list-style: none;");
       // spanElement.setAttribute("class", "ingredient_tag");
       iElement.setAttribute("class", "far fa-times-circle");

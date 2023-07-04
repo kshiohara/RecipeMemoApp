@@ -5,18 +5,21 @@
 <main>
 
   <div class="container my-3 py-5">
-    <h3>レシピ一覧</h3>
+    <h5 class="mb-4">レシピ一覧</h5>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @foreach($recipes as $recipe)
       <div class="col mb-4">
-        <div class="card">
-          <div class="card-body">
+        <div class="card" style="height: 300px;">
+          <div class="card-body overflow-auto">
 
             <!-- レシピ名詳細 -->
-            <h5 class="card-text">レシピ名：{{ $recipe['name'] }}</h5>
+            <p class="card-text">レシピ名：{{ $recipe['name'] }}</p>
 
             <!-- リンク詳細 -->
-            <p class="card-text">URL：<a href="{{ $recipe['link'] }}">{{ $recipe['link'] }}</a></p>
+            {{-- <p class="card-text">URL：<a href="{{ $recipe['link'] }}">{{ $recipe['link'] }}</a></p> --}}
+            <!-- リンク詳細 -->
+            <p class="card-text d-flex align-items-center">URL：<a href="{{ $recipe['link'] }}" class="text-truncate d-inline-block" style="max-width: 100%">{{ $recipe['link'] }}</a></p>
+
 
             <!-- 評価詳細 -->
             <p class="card-text">評価：{{ $recipe['rating'] }}</p>
@@ -34,15 +37,25 @@
             <p class="card-text">感想：{{ $recipe['comment'] }}</p>
 
             <!-- 材料詳細 -->
-            <p class="card-text">材料：<span class="">{{ implode('　', $recipe['ingredients']) }}</span></p>
+            @if ($recipe['ingredients'])
+            <p class="card-text d-flex flex-wrap">材料：
+              {{-- <span class="d-flex flex-wrap"> --}}
+                @foreach ($recipe['ingredients'] as $ingredient)
+                <span style="display:inline; border: 1px solid #b2cdde; border-radius: 3px; background-image: linear-gradient(180deg, #cae2f0 0, #c3d9e7); color: #545b67; padding: 2px 6px 0px; margin: 0 8px 6px 0; list-style: none; font-size: 11px">{{ $ingredient }}</span>
+                @endforeach
+              {{-- </span> --}}
+            </p>
+            @else
+            <p class="card-text">材料： 登録なし</p>
+            @endif
 
             {{-- 編集、削除ボタン --}}
-            <div class="text-right">
-              <button type="button" class="btn btn-primary mx-2 btn-sm float-right" onclick="location.href='{{ route('recipe.edit', $recipe['id']) }}'">編集</button>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-outline-primary mx-2 btn-sm float-right" onclick="location.href='{{ route('recipe.edit', $recipe['id']) }}'">編集</button>
               <form method="post" action="{{ route('recipe.destroy', $recipe['id']) }}" class="d-inline-block">
                 @method('delete')
                 @csrf
-                <button type="submit" class="btn btn-secondary btn-sm float-right" onclick="return confirm('本当に削除しますか?')">削除</button>
+                <button type="submit" class="btn btn-outline-danger btn-sm float-right" onclick="return confirm('本当に削除しますか?')">削除</button>
               </form>
             </div>
           </div>

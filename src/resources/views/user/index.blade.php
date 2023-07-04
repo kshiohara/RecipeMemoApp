@@ -41,7 +41,7 @@
           <form method="post" action="{{ route('user.destroy', $user) }}" class="d-inline-block">
             @method('delete')
             @csrf
-            <button type="submit" class="btn btn-secondary" onclick="return confirm('本当に削除しますか?')">削除</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか?')">削除</button>
           </form>
         </div>
       </div>
