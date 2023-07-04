@@ -51,6 +51,7 @@ class RecipeController extends Controller
         return view('recipe/index', compact('user', 'recipes'));
     }
 
+
     public function create()
     {
         return view('recipe/create');
@@ -75,7 +76,7 @@ class RecipeController extends Controller
 
         foreach($ingredients as $ingredientData) {
             // 材料が空ではない場合のみ処理
-            if (!empty($ingredient)) {
+            if (!empty($ingredientData)) {
                 // ingredientsテーブルのnameカラムの値が送信された材料名と一致するデータを取得
                 $existingIngredient = Ingredient::where('name', $ingredientData)->first();
 
