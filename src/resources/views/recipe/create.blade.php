@@ -2,10 +2,9 @@
 
 @section('content')
 
-<main>
-
-  <div class="container my-5 py-5" style="width: 50%">
-      <h5>レシピ登録画面</h5>
+  <div class="container pt-4" style="width: 60%">
+    <h4 class="text-center mb-5">レシピ登録画面</h4>
+    <div class="mb-5" style="background-color: #F9F9F9; padding: 20px 60px; border:1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
       <form id="recipe_form" method="post" action="{{ route('recipe.store') }}">
           @csrf
 
@@ -58,20 +57,20 @@
               {{-- nameを配列にすることで、複数の材料を登録できるようにする --}}
               <div class="d-flex align-items-center">
                 <input id="ingredient_name" class="block mt-1 form-control" type="text" name="ingredients[]" placeholder=材料名を入力してください（複数可） />
-                <button type="button" id="add-btn" class="btn btn-warning btn-sm mx-2">＋</button>
+                <button type="button" id="add-btn" class="btn btn-secondary btn-sm mx-2">＋</button>
               </div>
               <ul id="ingredient-list" class="mt-3 ps-0 d-flex flex-wrap"></ul>
           </div>
 
-          <div class="mt-5 text-center">
-            <button type="submit" class="btn btn-primary mx-4">登録</button>
-            <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('recipe.index') }}'">キャンセル</button>
+          <div class="my-4 text-center">
+            <button type="submit" class="btn btn-outline-primary mx-4">登録</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='{{ route('recipe.index') }}'">キャンセル</button>
           </div>
 
       </form>
   </div>
+</div>
 
-</main>
 
 
 <script>

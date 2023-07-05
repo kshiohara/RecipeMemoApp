@@ -15,8 +15,9 @@
         </div>
     @endif
 
-    <div class="container my-5 py-5" style="width: 50%">
-        <h5>ログイン画面</h5>
+    <div class="container" style="width: 60%">
+        <h4 class="text-center mt-3 mb-5">新規登録画面</h4>
+        <div class="" style="background-color:#F9F9F9; border:1px solid #c3c3c3; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 10px 40px;">
         <form method="post" action="{{ route('login') }}">
             @csrf
 
@@ -33,7 +34,7 @@
             </div>
 
             <!-- ログイン保持 -->
-            <div class="block mt-4 d-flex align-items-center">
+            <div class="block mt-4 mb-5 d-flex align-items-center">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                     <span class="ml-2 text-gray-600">ログイン保持</span>
@@ -42,16 +43,8 @@
                     <button type="submit" class="btn btn-primary btn-sm">ログイン</button>
                 </div>
             </div>
-            <!-- パスワード忘れた場合 -->
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="text-decoration-none text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        パスワードを忘れた場合はこちら
-                    </a>
-                @endif
-            <!-- ログインボタン -->
-            </div>
         </form>
+        </div>
     </div>
 
 

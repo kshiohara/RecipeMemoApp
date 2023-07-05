@@ -17,10 +17,10 @@
           {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
       </head>
       <body class="font-sans antialiased">
-          <div class="min-h-screen bg-gray-100">
+          <div class="vh-100" style="background: #f5f5f5;">
 
               <!-- Page Heading -->
-              <header class="bg-white shadow py-2">
+              <header class="bg-white shadow py-3">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 container">
                   <div class="row">
                     <div class="col-3"><a href="/" class="text-black text-decoration-none fs-2">Recipe Memo</a></div>
@@ -40,7 +40,7 @@
 
                     <div class="col-3 mt-1">
                       <ul class="list-unstyled list-group list-group-horizontal my-2">
-                        <li class="list-unstyled mx-4"><a href='{{ route('user.index') }}' class="text-black text-decoration-none font-weight-bold">マイページ</a></li>
+                        <li class="list-unstyled mx-4"><a href='{{ route('user.index') }}' class="text-black text-decoration-none">マイページ</a></li>
                         <li class="list-unstyled">
                           <a href={{ route('logout') }} class="text-black text-decoration-none" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                           <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
@@ -65,13 +65,15 @@
                       </ul>
                     </div>
                     @endauth
-
                   </div>
                 </div>
               </header>
 
               <!-- Page Content -->
+              <main class="py-5" style="background: #f5f5f5;">
                 @yield('content')
+              </main>
+
           </div>
       </body>
   </html>
