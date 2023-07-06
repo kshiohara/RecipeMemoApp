@@ -63,14 +63,6 @@ class RecipeController extends Controller
     {
         $user = Auth::user();
 
-        // バリデーション 動作確認
-        // $validator = $request->validated();
-
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
-
-
         // userが有料会員だった場合の処理
         if ($user->payment == 1) {
             // トランザクション

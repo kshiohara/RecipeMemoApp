@@ -25,7 +25,7 @@ class RecipeCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:100',
-            'link' => 'nullable|max:2084',
+            'link' => 'required|max:2084',
             'rating' => 'nullable|integer|between:1,5',
             'status' => 'integer',
             'comment' => 'nullable',
@@ -35,9 +35,11 @@ class RecipeCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'   => 'レシピ名：必ず入力してください。',
-            'name.max'        => 'レシピ名：100文字以内で入力してください。',
-            'status.integer' => '作成状況：「作成済み」、「未作成」のどちらかを選択してください。',
+            'name.required'   => 'レシピ名を入力してください。',
+            'name.max'        => 'レシピ名を100文字以内で入力してください。',
+            'link.required'   => 'URLを入力してください。',
+            'link.max'        => 'URLがtoo longです。',
+            'status.integer'  => '作成状況：「作成済み」、「未作成」のどちらかを選択してください。',
         ];
     }
 }
