@@ -4,6 +4,26 @@
 
   <div class="container pt-4" style="width: 60%">
     <h4 class="text-center mb-5">レシピ登録画面</h4>
+
+    {{-- 無料会員が5個以上レシピを登録した際のメッセージ --}}
+    @if(session('message'))
+      <div class="text-danger fw-bold">
+        {{ session('message')}}
+      </div>
+    @endif
+
+    {{-- バリデーションエラーメッセージ --}}
+    <div>
+      @if ($errors->any())
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      @endif
+    </div>
+
+
     <div class="mb-5" style="background-color: #F9F9F9; padding: 20px 60px; border:1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
       <form id="recipe_form" method="post" action="{{ route('recipe.store') }}">
           @csrf

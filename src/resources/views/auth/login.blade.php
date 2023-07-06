@@ -16,7 +16,7 @@
     @endif
 
     <div class="container" style="width: 60%">
-        <h4 class="text-center mt-3 mb-5">新規登録画面</h4>
+        <h4 class="text-center mt-3 mb-5">ログイン画面</h4>
         <div class="" style="background-color:#F9F9F9; border:1px solid #c3c3c3; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 10px 40px;">
         <form method="post" action="{{ route('login') }}">
             @csrf
@@ -40,7 +40,7 @@
                     <span class="ml-2 text-gray-600">ログイン保持</span>
                 </label>
                 <div class="ms-4">
-                    <button type="submit" class="btn btn-primary btn-sm">ログイン</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm">ログイン</button>
                 </div>
             </div>
         </form>
