@@ -5,6 +5,18 @@
 
 <div class="container pt-4" style="width: 60%;">
   <h4 class="text-center mb-5">レシピ編集画面</h4>
+
+  {{-- バリデーションエラーメッセージ --}}
+  <div>
+    @if ($errors->any())
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li class="text-danger fw-bold">{{ $error }}</li>
+      @endforeach
+    </ul>
+    @endif
+  </div>
+
   <div class="mb-5" style="background-color: #F9F9F9; padding: 20px 60px; border:1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
     {{-- 第一引数：user.updateへのルーティング、第二引数：ルートに渡すパラメーター --}}
     <form method="post" action="{{ route('recipe.update', $recipe) }}">
@@ -15,13 +27,13 @@
       <!-- レシピ名 -->
       <div class="mt-5">
         <label for="name" class="form-label">レシピ名</label>
-        <input id="name" class="block mt-1 form-control" type="text" name="name" value="{{ old('name', $recipe->name) }}" required autofocus/>
+        <input id="name" class="block mt-1 form-control" type="text" name="name" value="{{ old('name', $recipe->name) }}" autofocus/>
       </div>
 
       <!-- リンク -->
       <div class="mt-3">
         <label for="link" class="form-label">レシピURL</label>
-        <input id="link" class="block mt-1 form-control" type="text" name="link" value="{{ old('link', $recipe->link) }}" required autofocus/>
+        <input id="link" class="block mt-1 form-control" type="text" name="link" value="{{ old('link', $recipe->link) }}" autofocus/>
       </div>
 
         <!-- 評価 -->
@@ -57,7 +69,7 @@
       <!-- 感想 -->
       <div class="mt-3">
         <label for="comment" class="form-label">感想</label>
-        <textarea id="comment" class="block mt-1 form-control" type="text" name="comment" required autofocus >{{ old('comment', $recipe->comment) }}</textarea>
+        <textarea id="comment" class="block mt-1 form-control" type="text" name="comment" autofocus >{{ old('comment', $recipe->comment) }}</textarea>
       </div>
 
       <!-- 材料 -->
