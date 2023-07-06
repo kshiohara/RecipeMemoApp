@@ -30,8 +30,10 @@ class RecipeController extends Controller
             });
         }
 
-        // 検索キーワードと一致した情報を新しい順で取得
-        $recipe_data = $recipe_query->orderBy('created_at', 'desc')->get();
+        // レシピテーブルの情報を新しい順で取得
+        // $recipe_data = $recipe_query->orderBy('created_at', 'desc')->get();
+        $recipe_data = $recipe_query->orderBy('created_at', 'desc')->paginate(9);
+
         $recipes = [];
 
         foreach($recipe_data as $recipe){
@@ -50,7 +52,7 @@ class RecipeController extends Controller
             ];
         };
 
-        return view('recipe/index', compact('user', 'recipes'));
+        return view('recipe/index', compact('user', 'recipes', 'recipe_data'));
     }
 
 

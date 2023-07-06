@@ -72,6 +72,11 @@
       </div>
     </div>
     @endforeach
+
+
+  </div>
+  <div class="d-flex justify-content-center">
+    {{ $recipe_data->links('pagination::bootstrap-4')  }}
   </div>
 </div>
 
