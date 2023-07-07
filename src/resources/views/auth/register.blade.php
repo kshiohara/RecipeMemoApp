@@ -2,8 +2,8 @@
 
 @section('content')
 
-
-
+<div class="container" style="width: 60%">
+    <h4 class="text-center mt-3 mb-5">新規登録画面</h4>
     <!-- Validation Errors -->
     @if($errors->any())
         <div class="mb-4">
@@ -14,10 +14,6 @@
             </ul>
         </div>
     @endif
-
-
-<div class="container" style="width: 60%">
-    <h4 class="text-center mt-3 mb-5">新規登録画面</h4>
     <div class="" style="background-color:#F9F9F9; border:1px solid #c3c3c3; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 10px 40px;">
     <form method="POST" action="{{ route('register') }}">
         @csrf

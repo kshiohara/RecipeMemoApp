@@ -16,9 +16,9 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/', function () {
-//     return view('recipe.index');
-// });
+Route::get('/', function () {
+    return view('recipe.index');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,7 +27,8 @@ Route::get('/dashboard', function () {
 
 // userルーティング
 Route::get('user/index', [UserController::class, 'index'])
-            ->name('user.index');
+            ->name('user.index')
+            ->middleware('auth');
 
 Route::get('user/edit/{user}', [UserController::class, 'edit'])
             ->name('user.edit')

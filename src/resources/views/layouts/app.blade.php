@@ -17,7 +17,7 @@
           {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
       </head>
       <body class="font-sans antialiased">
-          <div class="vh-100" style="background: #f5f5f5;">
+          <div class="vh-100" style="background: #eeeeee;">
 
               <!-- Page Heading -->
               <header class="bg-white shadow py-3">
@@ -70,7 +70,7 @@
               </header>
 
               <!-- Page Content -->
-              <main class="py-5" style="background: #f5f5f5;">
+              <main class="py-5" style="background: #eeeeee;">
                 @yield('content')
               </main>
 

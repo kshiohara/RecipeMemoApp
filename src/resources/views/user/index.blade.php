@@ -4,6 +4,7 @@
 
 <div class="container" style="width: 50%">
   <h4 class="text-center mb-4">マイページ詳細画面</h4>
+
   <div class="" style="background-color:#F9F9F9; border:1px solid #c3c3c3; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 20px 40px;">
     <!-- 氏名詳細 -->
     <div class="mt-4 mb-4">
