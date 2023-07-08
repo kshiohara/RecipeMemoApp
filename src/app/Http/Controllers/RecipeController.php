@@ -109,11 +109,10 @@ class RecipeController extends Controller
 
 
             } else { // userが無料会員だった場合の処理
-
                 // ログインユーザーが登録したレシピ数をカウント
                 $count = Recipe::where('user_id', auth()->id())->count();
 
-                if ($count <= 5) { // 5個までレシピを登録できる
+                if ($count < 5) { // 5個までレシピを登録できる
 
                     // トランザクション
                     DB::transaction(function() use($request) {
@@ -153,6 +152,7 @@ class RecipeController extends Controller
 
                     // 処理後にレシピ一覧ページに遷移
                     return redirect()->route('recipe.index');
+
                 } else {
                     // 5個以上登録しようとした場合
                     return redirect()->route('recipe.create')->with('message', '無料会員の登録個数は5個までになります。追加で登録したい場合は有料会員にアップグレードをお願いします。');

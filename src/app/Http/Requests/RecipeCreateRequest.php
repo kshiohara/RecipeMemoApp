@@ -26,7 +26,7 @@ class RecipeCreateRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'link' => 'required|max:2084',
-            'rating' => 'nullable|integer|between:1,5',
+            'rating' => 'nullable',
             'status' => 'integer',
             'comment' => 'nullable',
         ];

@@ -28,7 +28,7 @@
             @endfor
           </div>
           @else
-            <p class="card-text">評価：<span class="fs-5" style="color:#c0c0c0"></span></p>
+            <p class="card-text">評価：<span class="fs-5" style="color:#c0c0c0">★★★★★</span></p>
           @endif
 
           <!-- 作成状況詳細 -->
